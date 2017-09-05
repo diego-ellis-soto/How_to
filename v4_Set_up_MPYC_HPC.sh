@@ -289,11 +289,23 @@ RSTUDIO
 squeue -u de293 -l
 
 
-
-
-
-
 echo 'Move newest workflow to this:'
 scp -r /Users/diegoellis/Downloads/cmsdm-master-7 de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/packages2
 scp -r /Users/diegoellis/Downloads/MOLSDM-master-6 de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/packages2
 
+
+echo 'So workflow worked with bigmem'
+echo Put all hummingbird models into my directory
+
+scp -r de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/output/try_help_from_YCRC_33334_hummingbird /Users/diegoellis/Desktop
+
+scp -r de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/output/try_help_from_YCRC_33334_hummingbird_inputs /Users/diegoellis/Desktop
+
+echo Move PSEM map types to HPC:
+
+
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_conservative de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_liberal de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_middlegorund de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/country de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/mcp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
