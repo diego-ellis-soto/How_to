@@ -303,9 +303,16 @@ scp -r de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/
 
 echo Move PSEM map types to HPC:
 
-
+echo UNDO: I JUST RERUN ALL PSEM AGAIn!!!
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_conservative de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_liberal de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_middleground de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/country de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/mcp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+
+
+echo 'Preparing CHELSA STEP'
+scp /Users/diegoellis/projects/development/Half_Earth/
+scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v1_hummingbirds_prepare_data.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
+scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v2_hummingbirds_make_SDM de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
+
