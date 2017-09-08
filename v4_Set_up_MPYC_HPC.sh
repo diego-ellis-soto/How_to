@@ -309,10 +309,34 @@ scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ahull_middleground de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/country de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
 scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/mcp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/ecoregion de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+scp -r /Users/diegoellis/projects/MOL/diego_hummingbirds/Expert_Map_Types/state de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM
+
+
+scp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MOL/CHELSA/CHELSA_subset/cropped_chelsa/cropped_chelsa.tif /Users/diegoellis/Desktop
+
 
 
 echo 'Preparing CHELSA STEP'
 scp /Users/diegoellis/projects/development/Half_Earth/
 scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v1_hummingbirds_prepare_data.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
-scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v2_hummingbirds_make_SDM de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
+scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v2_hummingbirds_make_SDM.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
+
+
+
+scp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/packages2/v1_Hummingbirds_HPC.r /Users/diegoellis/Desktop/PSEM
+scp de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/packages2/v2_make_Hummingbirds_HPC.r /Users/diegoellis/Desktop/PSEM
+
+
+echo 'Move the script to the PSEM folder on hpc'
+scp /Users/diegoellis/Desktop/PSEM/mcp_v1_PSEM_hummingbird.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM/code/
+scp /Users/diegoellis/Desktop/PSEM/mcp_v2_PSEM_hummingbird.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM/code/
+
+scp /Users/diegoellis/Desktop/PSEM/country_v2_PSEM_hummingbird.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM/code/
+
+
+scp /Users/diegoellis/Desktop/PSEM/CHELSA_HPC_v3_test_one_species de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM/code/
+scp /Users/diegoellis/projects/development/Half_earth/Grace_sdm/Half_Earth/CHELSA_HPC_v3_test_one_species.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/code/sdm_code/hummingbirds_code/Chelsa
+scp /Users/diegoellis/Desktop/PSEM/state_v1_PSEM_hummingbird.R de293@grace-next.hpc.yale.edu:/home/fas/jetz/de293/project/MPYC/data/sdm/hummingbirds/PSEM/code/
+
 
