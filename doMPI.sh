@@ -6,7 +6,7 @@ echo 'Inspired after Ben Carlsons how to:'
 echo 'First test doMPI interactively'
 srun --pty -p interactive -n 4 bash #request four tasks in the interactive queue
 srun --pty -p interactive -n 4 --mem=32g bash # ask for 32 G 
-
+echo 'Dont run module load Apps/R, do generid R and change the script so that doMPI only needs to be loading the speciessorted!'
 module load Apps/R
 module load Apps/R/3.3.2-generic # maybe use newer R instead of just R # Also maybe not install the packages but rather just load cmsdm and MOLSDM
 module load Rpkgs/DOMPI
