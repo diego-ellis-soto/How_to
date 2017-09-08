@@ -5,6 +5,8 @@ echo 'Inspired after Ben Carlsons how to:'
 
 echo 'First test doMPI interactively'
 srun --pty -p interactive -n 4 bash #request four tasks in the interactive queue
+
+echo 'Running this works'
 srun --pty -p interactive -n 4 --mem=32g bash # ask for 32 G 
 echo 'Dont run module load Apps/R, do generid R and change the script so that doMPI only needs to be loading the speciessorted!'
 module load Apps/R
@@ -16,7 +18,6 @@ mpirun -n 4 R --slave -f test_Chelsa_doMPI.R #use mpi run to kick off the script
 mpirun -np 1 #only start script on one task
 
 echo 'Second run doMPI on a batch script'
-
 
 #!/bin/bash
 #SBATCH --mail-type=ALL
