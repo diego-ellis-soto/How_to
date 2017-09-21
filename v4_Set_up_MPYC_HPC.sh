@@ -298,6 +298,25 @@ RSTUDIO
 squeue -u de293 -l
 
 
+NEWEST:
+
+sacct -j 4107868_244 -l | less -S # find memory usage of something
+srun -p  interactive --x11 --mem-per-cpu 32768 --pty bash
+module load Apps/RSTUDIO
+rstudio
+# opens R studio
+srun -p pi_jetz --x11 --mem-per-cpu 32768 --pty bash # get jetz node
+dSQ --taskfile task_file.txt --mem-per-cpu=60G -p week -t 2- > run_amph.sh 
+
+dSQ --taskfile failed_task.txt --mem-per-cpu=60G -p week -t 3- > failed_runs.sh 
+
+dSQ --taskfile failed_task.txt --mem-per-cpu=60G -p week -t 3- > failed_runs.sh 
+dSQAutopsy task_file.txt
+  250  dSQAutopsy task_file.txt job_4107868_status.tsv > failed_task.txt
+  251  cat failed_task.txt | wc -l
+  252   failed_task.txt  wc -l
+  253   wc -l failed_task.txt 
+
 
 
 
