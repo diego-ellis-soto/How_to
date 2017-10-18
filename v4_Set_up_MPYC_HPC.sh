@@ -318,6 +318,15 @@ dSQAutopsy task_file.txt
   253   wc -l failed_task.txt 
 
 
+### Find in my history certain commands:
+history | grep gdal # Go through my entire history and look for the keyword gdal
+
+This way I can see how many points were used for each species when running the workflow. 
+Just make sure you are in the directory with the slurm outfiles.
+In addition, we will open the generated text files with excel
+find . -name "*.out" -exec grep -H "presence points" {} \; > ~/dragonfly_looser.txt
+# Find the ones that had errors: 
+find . -name "*.out" -exec grep -H "Error" {} \; > ~/dragonfly_looser2.txt 
 
 
 
