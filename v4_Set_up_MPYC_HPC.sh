@@ -328,6 +328,8 @@ find . -name "*.out" -exec grep -H "presence points" {} \; > ~/dragonfly_looser.
 # Find the ones that had errors: 
 find . -name "*.out" -exec grep -H "Error" {} \; > ~/dragonfly_looser2.txt 
 
-
+Ssh diegoellis@turaco.eeb.yale.edu
+Ssh diegoellis@litoria.eeb.yale.edu
+htop
 
 
