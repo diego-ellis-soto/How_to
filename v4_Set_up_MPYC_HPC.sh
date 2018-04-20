@@ -302,6 +302,9 @@ NEWEST:
 
 sacct -j 4107868_244 -l | less -S # find memory usage of something
 srun -p  interactive --x11 --mem-per-cpu 32768 --pty bash
+
+srun -p  interactive --mem-per-cpu 32768 -t 6:00:00 --pty bash
+
 module load Apps/RSTUDIO
 rstudio
 # opens R studio
