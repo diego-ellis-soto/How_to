@@ -336,3 +336,4 @@ Ssh diegoellis@litoria.eeb.yale.edu
 htop
 
 
+srun --pty -p pi_jetz interactive --mem-per-cpu 32768 -t 06:00:00
