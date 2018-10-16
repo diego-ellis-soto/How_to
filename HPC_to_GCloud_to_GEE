@@ -1,0 +1,24 @@
+# Mount Grace to my local computer:
+sshfs de293@grace-next.hpc.yale.edu:/project/fas/jetz/data/CHELSA_MODCF/2004_test /Users/diegoellis/Desktop/Grace_Chelsa
+INDIR=/Users/diegoellis/Desktop/Grace_Chelsa/
+# Put precipitation data into Google Cloud
+gsutil cp $INDIR/*prec*.tif gs://mol_private_layers/chelsa/2004_test/
+# Now move the data from the bucket to GEE
+INBUCKET=gs://mol_private_layers/chelsa/2004_test
+# Get the names of all the files in the bucket and store them in a text file 
+gsutil ls $INBUCKET/*.tif > /Users/diegoellis/Desktop/precip_layers.txt # Get me the name of all the files in google earth
+# Write the path where this data is going to be stored
+PATH_TO_GEE=projects/earthenv/chelsa/Chelsa_2004_precip
+TIF_NAMES=/Users/diegoellis/Desktop/precip_layers.txt
+# For each column in this file (each column is a separate .tif file
+
+while read TIF_NAMES;
+do
+filename=$(basename $TIF_NAMES)
+filename_no_tif_extention=${filename/\.tif/}    # remove the .tif extention # Regular expressio 
+#      echo "$TIF_NAMES"
+echo $filename
+echo earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention --pyramiding_policy "sample" $INBUCKET/$filename
+earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention --pyramiding_policy "sample" $INBUCKET/$filename
+done</Users/diegoellis/Desktop/precip_layers.txt
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
