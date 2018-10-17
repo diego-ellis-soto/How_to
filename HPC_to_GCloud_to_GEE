@@ -22,3 +22,5 @@ echo earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention
 earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention --pyramiding_policy "sample" $INBUCKET/$filename
 done</Users/diegoellis/Desktop/precip_layers.txt
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+# Count how many layers are uplaoded
+gsutil ls gs://mol_private_layers/chelsa/2004_test/ | wc -l
