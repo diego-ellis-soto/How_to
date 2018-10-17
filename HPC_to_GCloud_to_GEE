@@ -20,6 +20,7 @@ filename_no_tif_extention=${filename/\.tif/}    # remove the .tif extention # Re
 echo $filename
 echo earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention --pyramiding_policy "sample" $INBUCKET/$filename
 earthengine upload image --asset_id $PATH_TO_GEE/$filename_no_tif_extention --pyramiding_policy "sample" $INBUCKET/$filename
+earthengine cp $filename projects/earthenv/chelsa/chelsa_2004_precip_collection/$filename
 done</Users/diegoellis/Desktop/precip_layers.txt
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 # Count how many layers are uplaoded
