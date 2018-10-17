@@ -27,4 +27,5 @@ user_settings='projects/earthenv/chelsa/Chelsa_2004_precip'
 start=T00:00:01
 end=T23:59:59
 earthengine asset set --time_start $( echo $year-$month-$day$start ) --time_end $( echo $year-$month-$day$end) $user_settings/$id_asset
+earthengine cp $filename projects/earthenv/chelsa/chelsa_2004_precip_collection/$filename
 done</Users/diegoellis/Desktop/chelsa_layers.txt
