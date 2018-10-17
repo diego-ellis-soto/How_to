@@ -1,0 +1,30 @@
+# Show me how many files are in google cloud 
+INBUCKET=gs://mol_private_layers/chelsa/2004_test
+gsutil ls $INBUCKET/*.tif | wc -l
+gsutil ls $INBUCKET/*.tif > /Users/diegoellis/Desktop/precip_layers.txt # Get me the name of all the files in google earth
+# Explore one file
+earthengine asset info projects/earthenv/chelsa/Chelsa_2004_precip/CHELSA_MODCL_prec_10_10_2004/
+# Show me all the files in the folders
+earthengine ls projects/earthenv/chelsa/Chelsa_2004_precip > /Users/diegoellis/Desktop/chelsa_layers.txt
+CHELSA_NAMES=/Users/diegoellis/Desktop/chelsa_layers.txt
+
+while read CHELSA_NAMES; # For each chelsa precipitation layer
+do
+filename=$(basename $CHELSA_NAMES)
+echo $filename
+# filename='CHELSA_MODCL_prec_11_9_2004'
+file_date=$( echo $filename | awk -F'_prec_' '{print $2}') # Get everything after _prec_
+file_date=$( echo $file_date | tr "_" "-") # Replace _ with -
+# Format is day month year
+year=$( printf $filename | tail -c 4) # Keep last four characters of string
+month=$(echo $file_date | cut -d '-' -f 2 ) # Get everything after the first - appears
+day=$(echo $file_date | cut -d '-' -f 1 )
+file_start_date=$( echo $file_date T00:00:01)
+file_end_date=$( echo $file_date 24:59:59 )
+id_asset=$filename
+user_settings='projects/earthenv/chelsa/Chelsa_2004_precip'
+# Format must be --time_start YYYY-mm-ddTHH:mm:ss
+start=T00:00:01
+end=T23:59:59
+earthengine asset set --time_start $( echo $year-$month-$day$start ) --time_end $( echo $year-$month-$day$end) $user_settings/$id_asset
+done</Users/diegoellis/Desktop/chelsa_layers.txt
