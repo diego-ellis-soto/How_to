@@ -1,0 +1,160 @@
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+# Splitting images:
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+# https://heartbeat.fritz.ai/image-manipulation-for-machine-learning-in-r-ff2b92069fef
+# https://www.bioconductor.org/packages/release/bioc/vignettes/EBImage/inst/doc/EBImage-introduction.html#11_cell_segmentation_example
+# FIJI tutorial
+require(EBImage)
+library(magick)
+
+
+list.files('/Users/diegoellis/projects/Classes_WS_2019/ConsXLab/', pattern = '*.jpg')
+folder_with_images = '/Users/diegoellis/projects/Classes_WS_2019/ConsXLab/'
+folder_to_save = '/Users/diegoellis/projects/Classes_WS_2019/ConsXLab/Splitted_images'
+split_my_image_into_many <- function(folder_with_images, folder_to_save){
+  images = list.files(folder_with_images, pattern = '.jpg', full.names = TRUE)  
+
+  for(i in unique(images)){
+    frink <- image_read(i)
+    ( info <- image_info(frink) )
+    # https://stackoverflow.com/questions/41003274/how-to-split-an-image-in-many-images-in-r  crops <- list()
+    for (x in seq(0,info$width%/%416*416,416)) 
+      for (y in seq(0,info$height%/%416*416,416)) 
+        crops <- c(crops, image_crop(frink, sprintf("416x416+%d+%d", x, y)))
+     # Save the cropped image:
+      n_images_was_cropped_into <- length(crops)
+      seq(1, n_images_was_cropped_into)
+      # x <- crops[[1]]
+
+      # NEED TO ADD SOME SORT OF INDEX!
+      
+      initital_image_name <- basename(i)
+      lapply(crops, function(x){
+        if(file.exists(paste0(folder_to_save,'_', initital_image_name))){
+          
+        }
+        image_write(x, paste0(folder_to_save,'_', initital_image_name))   # need to ADD an index here:
+      })
+      
+      # lapply(seq_along(x), function(i) paste(names(x)[[i]], x[[i]]))
+      
+    }
+  
+}
+
+
+image_join(crops)
+
+# For example, write tile in column 1, row 3 to a temp file: 
+image_write(crops[[3]], tf <- tempfile(fileext = ".png"))
+shell.exec(tf)
+
+
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+# Splitting images:
+# --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+# https://heartbeat.fritz.ai/image-manipulation-for-machine-learning-in-r-ff2b92069fef
+# https://www.bioconductor.org/packages/release/bioc/vignettes/EBImage/inst/doc/EBImage-introduction.html#11_cell_segmentation_example
+# FIJI
+# FIJI tutorials:
+# Geometry specification use width, height, xoffset, andyoffset to specify size/dimension and position for an object and is represented in the form of:
+# Splitting our image into smaller image:
+# 00 means width = 200px, so image_scale(image, “200”) will resize the image proportionally to width: 200px
+# The MNIST and ImageNet datasets redefined AI and deep learning, helping researchers develop new neural network architectures and improve accuracy. Thus the application of AI in real-world problems starts with building datasets
+# In order to use images for building computer vision datasets, images are subjected to a couple of changes, like reshaping all the images into one definite size or converting to grayscale to reduce the number of features (which in turn can reduce training time). That’s where image manipulation and processing techniques that we reviewed above help us.
+# FIJI:
+# Turn this into a function:
+
+require(EBImage)
+
+
+
+
+This one will be faster than printing the picture and cutting it using ordinary scissors:
+  
+  library(magick)
+# frink <- image_read("https://jeroenooms.github.io/images/frink.png")
+frink <- image_read('/Users/diegoellis/projects/Classes_WS_2019/ConsXLab/DJI_0029.JPG')
+( info <- image_info(frink) )
+#   format width height colorspace filesize
+# 1    PNG   220    445       sRGB    73494
+# https://stackoverflow.com/questions/41003274/how-to-split-an-image-in-many-images-in-r
+crops <- list()
+for (x in seq(0,info$width%/%416*416,416)) 
+  for (y in seq(0,info$height%/%416*416,416)) 
+    crops <- c(crops, image_crop(frink, sprintf("416x416+%d+%d", x, y)))
+
+image_join(crops)
+
+# For example, write tile in column 1, row 3 to a temp file: 
+image_write(crops[[3]], tf <- tempfile(fileext = ".png"))
+shell.exec(tf)
+
+
+# — — — — — — — — — — — —
+# Image contour lines 
+# — — — — — — — — — — — —
+
+library(magick);require(pixmap);require(devtools);require(image.ContourDetector)
+devtools::install_github('bnosac/image', subdir = "image.ContourDetector", build_vignettes = TRUE)
+f <- tempfile(fileext = ".pgm")
+x <- image_read("/Users/diegoellis/Destkop/ian_cell")
+getx <- image_read('/Users/diegoellis/Desktop/Video_Cuyabeno/Video_Gal_Yasuni/DJI_0029.JPG')
+x <- image_convert(x, format = "pgm", depth = 8)
+image_write(x, path = f, format = "pgm")
+
+image <- read.pnm(file = f, cellres = 1)
+x <- image@grey * 255
+dim(x) # 222 270
+contourlines <- image_contour_detector(x)
+contourlines
+plot(image)
+plot(contourlines)
+contourlines <- image_contour_detector(image@grey * 255)
+contourlines
+par(mai = c(0, 0, 0, 0), mar = c(0, 0, 0, 0))
+plot(image)
+xxplot(contourlines, add = TRUE, col = "red")
+# Getting started with dark net:
+
+# Image contour lines 
+library(magick);require(pixmap);require(devtools);require(image.ContourDetector)
+devtools::install_github('bnosac/image', subdir = "image.ContourDetector", build_vignettes = TRUE)
+f <- tempfile(fileext = ".pgm")
+x <- image_read("/Users/diegoellis/Destkop/ian_cell")
+getx <- image_read('/Users/diegoellis/Desktop/Video_Cuyabeno/Video_Gal_Yasuni/DJI_0029.JPG')
+x <- image_convert(x, format = "pgm", depth = 8)
+image_write(x, path = f, format = "pgm")
+
+image <- read.pnm(file = f, cellres = 1)
+x <- image@grey * 255
+dim(x) # 222 270
+contourlines <- image_contour_detector(x)
+contourlines
+plot(image)
+plot(contourlines)
+contourlines <- image_contour_detector(image@grey * 255)
+contourlines
+par(mai = c(0, 0, 0, 0), mar = c(0, 0, 0, 0))
+plot(image)
+xxplot(contourlines, add = TRUE, col = "red")
+# image <- read.pnm(file = f, cellres = 1)
+# par(mai = c(0, 0, 0, 0), mar = c(0, 0, 0, 0))
+# plot(image)
+
+
+# — — — — — — — — — — — —
+# Trained on image.net
+# — — — — — — — — — — — —
+
+library(image.darknet)
+yolo_tiny_voc <- image_darknet_model(type = 'detect', model = "tiny-yolo-voc.cfg", weights = system.file(package="image.darknet", "models", "tiny-yolo-voc.weights"), labels = system.file(package="image.darknet", "include", "darknet", "data", "voc.names"))
+
+x <- image_darknet_detect(file = "/Users/diegoellis/Desktop/Video_Cuyabeno/Video_Gal_Yasuni/DJI_0029.JPG", 
+                          object = yolo_tiny_voc,
+                          threshold = 0.19)
+
+
+
+
+
